@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './perguntas.dart';
+import './botao.dart';
 
 main(){
   runApp(aulaGrupo2());
@@ -10,7 +12,7 @@ class aulaGrupo2 extends StatefulWidget{
   State<aulaGrupo2> createState() => _aulaGrupo2State();
 }
 
-class _aulaGrupo2State extends State<aulaGrupo2> {
+class _aulaGrupo2State extends State<aulaGrupo2> {  
   var contador = 0;
 
   final perguntas = [
@@ -34,13 +36,16 @@ class _aulaGrupo2State extends State<aulaGrupo2> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Meu primeiro app!"),
+          title: Text("Jogo de perguntas"),
         ),
         body: Column(
           children: [
-            Text(perguntas[contador]),
+            Perguntas(perguntas[contador]),
 
-            ElevatedButton(onPressed: clicou, child: Text("Clique Aqui"))
+            ElevatedButton(onPressed: clicou, child: Botao("Azul")),
+            ElevatedButton(onPressed: clicou, child: Botao("Verde")),
+            ElevatedButton(onPressed: clicou, child: Botao("Vermelho")),
+            ElevatedButton(onPressed: clicou, child: Botao("Amarelo")),
 
           ],
         ),
