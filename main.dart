@@ -1,55 +1,57 @@
 import 'package:flutter/material.dart';
-import './perguntas.dart';
-import './botao.dart';
+import './azul.dart';
+import './verde.dart';
+import './preta.dart';
 
-main(){
-  runApp(aulaGrupo2());
-}
-
-class aulaGrupo2 extends StatefulWidget{
-
+class MyApp extends StatefulWidget {
   @override
-  State<aulaGrupo2> createState() => _aulaGrupo2State();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _aulaGrupo2State extends State<aulaGrupo2> {  
-  var contador = 0;
-
-  final perguntas = [
-    "Qual a sua cor favorita?",
-    "Qual o seu animal favorito?",
-    "Qual o seu carro favorito?",
-    "Qual o seu signo favorito?",
-    "Qual o seu cantor favorito?",
-    "Qual o seu país favorito?",
-    "Qual o seu ator favorito?",
-  ];
-
-  void clicou(){
-    setState(() {
-      contador : contador++;
-    });
-    print(contador);
-  }
-
-  Widget build(BuildContext context){
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Jogo de perguntas"),
+          title: Text('Aplicativo'),
         ),
-        body: Column(
-          children: [
-            Perguntas(perguntas[contador]),
-
-            ElevatedButton(onPressed: clicou, child: Botao("Azul")),
-            ElevatedButton(onPressed: clicou, child: Botao("Verde")),
-            ElevatedButton(onPressed: clicou, child: Botao("Vermelho")),
-            ElevatedButton(onPressed: clicou, child: Botao("Amarelo")),
-
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TelaAzul()),
+                  );
+                },
+                child: Text('TELA AZUL'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TelaVerde()),
+                  );
+                },
+                child: Text('TELA VERDE'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TelaPreta()),
+                  );
+                },
+                child: Text('TELA PRETA'),
+              ),
+            ],
+          ),
         ),
-        ),
+      ),
     );
   }
 }
