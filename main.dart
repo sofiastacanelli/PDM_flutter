@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './questionario.dart';
 import './questao.dart';
 import './resposta.dart';
 
@@ -59,11 +60,13 @@ class _AulaComponentesState extends State<AulaComponentes> {
         appBar: AppBar(
           title: temPergunta ? Questao(questionario[perguntaAtual]["pergunta"].toString()) : Questao("Terminou"),
         ),
-        body: temPergunta ? Column(
-          children: [
-            ...respostas,
-          ],
-        ) : Text("Resultado"),
+        body: temPergunta
+           ? Questionario(
+                perguntas: questionario,
+                perguntaAtual: perguntaAtual,
+                onRespostaSelecionada: () => acao(),
+              )
+         : Text("Resultado"),
       ),
     );
   }
